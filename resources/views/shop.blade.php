@@ -22,7 +22,6 @@
                                 </form>
                             </div>
                             <a class="text-center" href="/">商品一覧へ</a>
-                                {{-- ここまで --}}
                         </div>
                     @endforeach
                     {{$stocks->links()}}
