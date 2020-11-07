@@ -9,4 +9,11 @@ class Stock extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function detail($id)
+    {
+        $details = Stock::findOrFail($id);
+
+        return $details;
+    }
 }

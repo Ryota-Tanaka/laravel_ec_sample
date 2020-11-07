@@ -18,7 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'ShopController@index');
-Route::get('/mycart', 'ShopController@myCart')->middleware('auth');
-Route::post('/mycart', 'ShopController@addMyCart');
-Route::post('/cartdelete', 'ShopController@deleteCart');
-Route::post('/checkout', 'ShopController@checkout');
+Route::get('/detail/{id}', 'ShopController@showDetail');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/mycart', 'ShopController@myCart')->middleware('auth');
+    Route::post('/mycart', 'ShopController@addMyCart');
+    Route::post('/cartdelete', 'ShopController@deleteCart');
+    Route::post('/checkout', 'ShopController@checkout');
+    Route::post('/detail/{id}', 'ShopController@addMyCart');
+});

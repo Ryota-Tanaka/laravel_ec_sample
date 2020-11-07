@@ -70,4 +70,21 @@ class Cart extends Model
 
         return $checkout_items;
     }
+
+    public function cartCheck($stock_id)
+    {
+        $user_id = Auth::id();
+
+        // カートの中身取得
+        $cart_info = Cart::where(['stock_id' => $stock_id, 'user_id' => $user_id]);
+
+        $message = '';
+
+        // カートの中身チェック
+        if (!isset($cart_info)) {
+            $message = 'カートに追加されています。';
+        }
+
+        return $message;
+    }
 }

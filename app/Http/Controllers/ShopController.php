@@ -49,4 +49,20 @@ class ShopController extends Controller
 
         return view('checkout');
     }
+
+    public function showDetail(Request $request, Stock $stock, Cart $cart)
+    {
+        $id = $request->id;
+
+        // 詳細情報取得
+        $details = $stock->detail($id);
+
+        // カート内に含まれているかチェック
+        $message = $cart->cartCheck($id);
+
+        return view('detail', [
+            'details' => $details,
+            'message' => $message
+        ]);
+    }
 }
