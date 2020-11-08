@@ -27,3 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/checkout', 'ShopController@checkout');
     Route::post('/detail/{id}', 'ShopController@addMyCart');
 });
+
+Route::get('login/twitter', 'Auth\TwitterLoginController@redirectToProvider');
+Route::get('login/twitter/callback', 'Auth\TwitterLoginController@handleProviderCallback');
